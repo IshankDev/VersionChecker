@@ -12,8 +12,10 @@ Using Maven
   <type>pom</type>
 </dependency>
 
+
 Using Gradle - 
-  compile 'Version_Checker:library:1.0'
+
+compile 'Version_Checker:library:1.0'
   
   
  For more details related to implementation check Sample app link - 
