@@ -3,22 +3,29 @@ It check if there is a new version of your published app available or not by mak
 
 To start implantation in your app check below details - 
 
-Using Maven 
+  
+# Usage
 
-  <dependency>
-  <groupId>Version_Checker</groupId>
-  <artifactId>library</artifactId>
-  <version>1.0</version>
-  <type>pom</type>
-</dependency>
+Using Maven: 
 
+    <dependency> 
+        <groupId>Version_Checker</groupId> 
+        <artifactId>library</artifactId>
+        <version>1.0</version>
+        <type>pom</type>
+    </dependency>
+		
+Using Gradle. Add the dependency
 
-Using Gradle - 
-
-compile 'Version_Checker:library:1.0'
+    dependencies {
+	       compile 'Version_Checker:library:1.0'
+	}
   
   
+ # Samples & # For Implementation 
+
  For more details related to implementation check Sample app link - 
+ 
  https://github.com/IshankDev/VersionChecker/tree/master/app
  
 Thanks!
