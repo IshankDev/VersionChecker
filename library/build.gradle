@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+apply plugin: 'com.jfrog.bintray'
+
+group = 'Version_Checker'
+version = '1.0'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+
+}
+
+
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'org.jsoup:jsoup:1.9.2'
+}
+
+// build a jar with source files
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+// build a jar with javadoc
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+bintray {
+    user = 'ishandev'
+    key = '0cec9596c0b1efd925b42378fb23851fed7c676f'
+
+    pkg {
+        repo = 'VersionChecker/'
+        name = 'Version_Checker'
+
+        version {
+            name = '1.0-Final'
+            desc = 'check Version'
+            released  = new Date()
+            vcsTag = '1.0'
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/IshankDev/VersionChecker'
+        websiteUrl = 'https://github.com/IshankDev/VersionChecker'
+    }
+    configurations = ['archives']
+}
